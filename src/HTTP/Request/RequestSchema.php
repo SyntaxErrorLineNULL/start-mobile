@@ -35,10 +35,10 @@ class RequestSchema
         $this->requestValidator = $requestValidator;
     }
 
-    /*public function getRequestProperty(string $schema, Request $request): object
+    public function getRequestProperty(string $schema, Request $request): object
     {
-        $schema = $this->serializer->deserialize($request->getBody(), $schema, self::TYPE);
+        $schema = $this->serializer->deserialize($request->getContent(), $schema, self::TYPE);
         $this->requestValidator->validate($schema);
         return $schema;
-    }*/
+    }
 }
