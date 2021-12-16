@@ -1,26 +1,32 @@
 {
+    "name": "symfony/symfony-demo",
     "type": "project",
+    "description": "Symfony Demo Application",
     "license": "proprietary",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.0.2",
+        "php": "^8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "symfony/console": "6.0.*",
-        "symfony/dotenv": "6.0.*",
-        "symfony/flex": "^2",
-        "symfony/framework-bundle": "6.0.*",
-        "symfony/runtime": "6.0.*",
-        "symfony/yaml": "6.0.*"
-    },
-    "require-dev": {
+        "composer/package-versions-deprecated": "1.11.99.1",
+        "doctrine/annotations": "^1.13",
+        "doctrine/doctrine-bundle": "^2.3",
+        "doctrine/doctrine-migrations-bundle": "^3.1",
+        "doctrine/orm": "^2.8",
+        "fakerphp/faker": "^1.17",
+        "friendsofsymfony/rest-bundle": "^3.0",
+        "symfony/console": "5.2.*",
+        "symfony/dotenv": "5.2.*",
+        "symfony/flex": "^1.3.1",
+        "symfony/framework-bundle": "5.2.*",
+        "symfony/monolog-bundle": "^3.7",
+        "symfony/proxy-manager-bridge": "5.2.*",
+        "symfony/security-bundle": "5.2.*",
+        "symfony/validator": "5.2.*",
+        "symfony/yaml": "5.2.*"
     },
     "config": {
-        "allow-plugins": {
-            "symfony/flex": true,
-            "symfony/runtime": true
-        },
         "optimize-autoloader": true,
         "preferred-install": {
             "*": "dist"
@@ -40,10 +46,7 @@
     "replace": {
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
-        "symfony/polyfill-php72": "*",
-        "symfony/polyfill-php73": "*",
-        "symfony/polyfill-php74": "*",
-        "symfony/polyfill-php80": "*"
+        "symfony/polyfill-php72": "*"
     },
     "scripts": {
         "auto-scripts": {
@@ -63,7 +66,16 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.0.*"
+            "require": "5.2.*"
         }
+    },
+    "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "symfony/debug-bundle": "^5.2",
+        "symfony/maker-bundle": "^1.31",
+        "symfony/stopwatch": "^5.2",
+        "symfony/twig-bundle": "^5.2",
+        "symfony/var-dumper": "^5.2",
+        "symfony/web-profiler-bundle": "^5.2"
     }
 }
