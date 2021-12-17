@@ -16,7 +16,7 @@ class AppFixtures extends Fixture
         $author = new Author($faker->name());
         $manager->persist($author);
         for ($i = 0; $i < 5; $i++) {
-            $book = new Book($faker->name, $faker->title, $author);
+            $book = new Book($faker->name, $faker->title, $faker->realText(20), $author);
             $manager->persist($book);
         }
         $manager->flush();

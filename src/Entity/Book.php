@@ -35,12 +35,14 @@ class Book
 
     /**
      * @param string $name
+     * @param string $title
      * @param string $description
      * @param Author $author
      */
-    public function __construct(string $name, string $description, Author $author)
+    public function __construct(string $name, string $title, string $description, Author $author)
     {
         $this->name = $name;
+        $this->title = $title;
         $this->description = $description;
         $this->author = $author;
     }
