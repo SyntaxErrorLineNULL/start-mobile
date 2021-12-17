@@ -12,17 +12,5 @@ use App\Dto\Book;
 
 class BooksCollection
 {
-    /**
-     * @var Book[]
-     */
-    public array $items;
-
-    /**
-     * @param Book[] $items
-     */
-    public function __construct(array $items)
-    {
-        $this->items = $items;
-    }
 
 }
