@@ -20,7 +20,7 @@ class Book
     /**
      * @ORM\Column(type="string", length=65, nullable=true)
      */
-    public string $name;
+    public string $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -45,4 +45,11 @@ class Book
         $this->author = $author;
     }
 
+    public function changeTitle(string $title): void {
+        $this->title = $title;
+    }
+
+    public function changeDescription(string $description): void {
+        $this->description = $description;
+    }
 }
