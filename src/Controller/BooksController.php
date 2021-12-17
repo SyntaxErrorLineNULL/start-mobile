@@ -34,7 +34,7 @@ class BooksController extends AbstractController
     public function booksList(): JsonResponse {
         $books = $this->bookRepository->findAll();
         $item = array_map([$this->mapper, 'map'], $books);
-        return new JsonResponse(new BooksCollection($item), Response::HTTP_OK);
+        return new JsonResponse($item, Response::HTTP_OK);
     }
 
     #[Route('/by-id/{id}', name: 'singleBook', methods: ['GET'])]
@@ -44,9 +44,9 @@ class BooksController extends AbstractController
     }
 
     #[Route('/update/{id}', name: 'updateBook', methods: ['POST'])]
-    public function updateBook(Request $request, int $booId): JsonResponse {
+    public function updateBook(Request $request, int $id): JsonResponse {
         $requestSchema = $this->requestSchema->getRequestProperty(UpdateBookSchema::class, $request);
-        $book = $this->bookRepository->findById($booId);
+        $book = $this->bookRepository->findById($id);
 
         $book->changeTitle($requestSchema->title);
         $book->changeDescription($requestSchema->description);
@@ -59,9 +59,11 @@ class BooksController extends AbstractController
      * @throws ORMException
      */
     #[Route('/remove/{id}', name: 'removeBook', methods: ['DELETE'])]
-    public function removeBook(int $booId) {
-        $book = $this->bookRepository->findById($booId);
+    public function removeBook(int $id): JsonResponse {
+        $book = $this->bookRepository->findById($id);
         $this->bookRepository->remove($book);
         $this->flusher->flush();
+
+        return new JsonResponse(['message' => 'success remove book'], Response::HTTP_CREATED);
     }
 }
