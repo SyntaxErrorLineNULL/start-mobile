@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
-namespace App\DtoMapper;
+namespace App\Common\DtoMapper;
 
-use App\Dto\Author;
+use App\Common\Dto\Author;
 use App\Entity\Author as AuthorEntity;
 
 class AuthorMapper
