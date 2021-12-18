@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Api;
 
-use App\Common\DtoMapper\BookMapper;
+use App\Common\Api\Mapper\BookMapper;
 use App\HTTP\Request\RequestSchema;
 use App\Repository\BookRepository;
 use App\Service\Flusher;

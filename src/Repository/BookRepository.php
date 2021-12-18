@@ -4,8 +4,11 @@ namespace App\Repository;
 
 use App\Entity\Book;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
+use function Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Book|null find($id, $lockMode = null, $lockVersion = null)
@@ -39,8 +42,15 @@ class BookRepository extends ServiceEntityRepository
         $this->_em->remove($book);
     }
 
-    public function countBook(int $authorId) {
+    /**
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
+    public function countBook(int $authorId): int {
         $qb = $this->createQueryBuilder('book');
-        $qb->select();
+        $qb->select('COUNT(book.authorId)')
+            ->andWhere($qb->expr()->eq('book.authorId', ':authorId'))
+            ->setParameter('authorId', $authorId);
+        return $qb->getQuery()->getSingleScalarResult();
     }
 }

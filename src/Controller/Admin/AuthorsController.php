@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Common\Admin\Mapper\AuthorMapper;
 use App\Entity\Author;
 use App\Form\AuthorType;
 use App\Repository\AuthorRepository;
@@ -15,13 +16,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class AuthorsController extends AbstractController
 {
 
-    public function __construct(private AuthorRepository $authorRepository, private Flusher $flusher) {}
+    public function __construct(private AuthorRepository $authorRepository, private Flusher $flusher, private AuthorMapper $mapper) {}
 
     #[Route('/', name: 'authors_index', methods: ['GET'])]
     public function index(): Response
     {
+        $authors = $this->authorRepository->findAll();
+        $item = array_map([$this->mapper, 'map'], $authors);
         return $this->render('authors/index.html.twig', [
-            'authors' => $this->authorRepository->findAll(),
+            'authors' => $item,
         ]);
     }
 

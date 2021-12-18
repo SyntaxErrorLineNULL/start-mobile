@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Common\DtoMapper\BookMapper;
+use App\Common\Api\Mapper\BookMapper;
 use App\Entity\Book;
 use App\Form\BookType;
 use App\Repository\BookRepository;
@@ -23,7 +23,6 @@ class BooksController extends AbstractController
     {
         $books = $this->bookRepository->findAll();
         $item = array_map([$this->mapper, 'map'], $books);
-        //var_dump($item);
         return $this->render('books/index.html.twig', [
             'books' => $item,
         ]);
