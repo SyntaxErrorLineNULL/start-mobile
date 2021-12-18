@@ -23,26 +23,27 @@ class Author
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    public int $id;
+    private int $id;
 
     /**
-     * @ORM\Column(type="string", length=65, nullable=false)
+     * @ORM\Column(type="string", length=55)
      */
-    public string $name;
+    private string $name;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Book::class,mappedBy="author",cascade={"all"})
-     * @var Collection<array-key, Book>
-     */
-    public Collection $books;
-
-    /**
-     * @param string $name
-     */
-    public function __construct(string $name)
+    public function getId(): ?int
     {
-        $this->name = $name;
-        $this->books = new ArrayCollection();
+        return $this->id;
     }
 
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
 }
