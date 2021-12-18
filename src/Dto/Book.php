@@ -16,15 +16,15 @@ class Book
 
     public string $description;
 
-    public Author $author;
+    public ?Author $author;
 
     /**
      * @param int $id
      * @param string $title
      * @param string $description
-     * @param Author $author
+     * @param Author|null $author
      */
-    public function __construct(int $id, string $title, string $description, Author $author)
+    public function __construct(int $id, string $title, string $description, ?Author $author)
     {
         $this->id = $id;
         $this->title = $title;

@@ -15,8 +15,8 @@ class AuthorMapper
 {
     public function map(AuthorEntity $entity): Author {
         return new Author(
-            $entity->id,
-            $entity->name
+            $entity->getId(),
+            $entity->getName()
         );
     }
 }

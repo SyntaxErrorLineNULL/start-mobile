@@ -10,25 +10,24 @@ namespace App\DtoMapper;
 
 use App\Dto\Book;
 use App\Entity\Book as BookEntity;
+use App\Repository\AuthorRepository;
 
 class BookMapper
 {
-    private AuthorMapper $authorMapper;
-
     /**
      * @param AuthorMapper $authorMapper
+     * @param AuthorRepository $authorRepository
      */
-    public function __construct(AuthorMapper $authorMapper)
-    {
-        $this->authorMapper = $authorMapper;
-    }
+    public function __construct(private AuthorMapper $authorMapper, private AuthorRepository $authorRepository) {}
 
     public function map(BookEntity $entity): Book {
+        $author = $this->authorRepository->findById($entity->getAuthorId());
+
         return new Book(
-            $entity->id,
-            $entity->title,
-            $entity->description,
-            $this->authorMapper->map($entity->author)
+            $entity->getId(),
+            $entity->getTitle(),
+            $entity->getDescription(),
+            $author ? $this->authorMapper->map($author) : null
         );
     }
 }
