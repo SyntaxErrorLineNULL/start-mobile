@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace App\Common\Dto;
+namespace App\Common\Admin\Dto;
 
 class Author
 {
@@ -14,14 +14,18 @@ class Author
 
     public string $name;
 
+    public int $countBook;
+
     /**
      * @param int $id
      * @param string $name
+     * @param int $countBook
      */
-    public function __construct(int $id, string $name)
+    public function __construct(int $id, string $name, int $countBook)
     {
         $this->id = $id;
         $this->name = $name;
+        $this->countBook = $countBook;
     }
 
 }

@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace App\Common\Dto;
+namespace App\Common\Api\Dto;
 
 class Book
 {

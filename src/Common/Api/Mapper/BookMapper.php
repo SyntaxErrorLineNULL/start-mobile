@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
-namespace App\Common\DtoMapper;
+namespace App\Common\Api\Mapper;
 
-use App\Common\Dto\Book;
+use App\Common\Api\Dto\Book;
 use App\Entity\Book as BookEntity;
 use App\Repository\AuthorRepository;
 
