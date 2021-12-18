@@ -38,4 +38,9 @@ class BookRepository extends ServiceEntityRepository
     public function remove(Book $book): void {
         $this->_em->remove($book);
     }
+
+    public function countBook(int $authorId) {
+        $qb = $this->createQueryBuilder('book');
+        $qb->select();
+    }
 }
