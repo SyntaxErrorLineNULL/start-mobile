@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New Authors</title>
+
+{% block body %}
+    <h1>Create new Authors</h1>
+
+    {{ include('authors/_form.html.twig') }}
+
+    <a href="{{ path('authors_index') }}">back to list</a>
+{% endblock %}

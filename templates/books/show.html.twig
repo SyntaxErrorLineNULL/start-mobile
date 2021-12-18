@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<title>Book</title>
+<title>Books</title>
 
 {% block body %}
-    <h1>Book</h1>
+    <h1>Books</h1>
 
     <table class="table">
         <tbody>
@@ -19,12 +19,16 @@
                 <th>Description</th>
                 <td>{{ book.description }}</td>
             </tr>
+            <tr>
+                <th>AuthorId</th>
+                <td>{{ book.authorId }}</td>
+            </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('book_index') }}">back to list</a>
+    <a href="{{ path('books_index') }}">back to list</a>
 
-    <a href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
+    <a href="{{ path('books_edit', {'id': book.id}) }}">edit</a>
 
-    {{ include('book/_delete_form.html.twig') }}
+    {{ include('books/_delete_form.html.twig') }}
 {% endblock %}
