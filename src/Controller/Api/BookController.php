@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controller\Api;
 
-use App\DtoMapper\BookMapper;
+use App\Common\DtoMapper\BookMapper;
 use App\HTTP\Request\RequestSchema;
 use App\Repository\BookRepository;
 use App\Service\Flusher;
@@ -20,9 +20,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/api/v1/books')]
-class BooksController extends AbstractController
+class BookController extends AbstractController implements BookHeaderInterface
 {
-
     public function __construct(
         private BookRepository $bookRepository,
         private BookMapper $mapper,
@@ -48,8 +47,8 @@ class BooksController extends AbstractController
         $requestSchema = $this->requestSchema->getRequestProperty(UpdateBookSchema::class, $request);
         $book = $this->bookRepository->findById($id);
 
-        $book->changeTitle($requestSchema->title);
-        $book->changeDescription($requestSchema->description);
+        $book->setTitle($requestSchema->title);
+        $book->setDescription($requestSchema->description);
         $this->flusher->flush();
 
         return new JsonResponse(['message' => 'success update book'], Response::HTTP_CREATED);
