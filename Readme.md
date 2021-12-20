@@ -2,7 +2,7 @@
 
 ## Getting started
 
-###To get it working, follow these steps:
+### To get it working, follow these steps:
 
 - Clone the repository from github
     ```git
