@@ -36,7 +36,7 @@ class BookController extends AbstractController implements BookHeaderInterface
         return new JsonResponse($item, Response::HTTP_OK);
     }
 
-    #[Route('/by-id/{id}', name: 'singleBook', methods: ['GET'])]
+    #[Route('/{id}', name: 'singleBook', methods: ['GET'])]
     public function singleBook(int $id): JsonResponse {
         $book = $this->bookRepository->findById($id);
         return new JsonResponse($this->mapper->map($book), Response::HTTP_OK);
