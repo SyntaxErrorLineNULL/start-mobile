@@ -6,7 +6,7 @@
 
 - Clone the repository from github
     ```git
-    https://github.com/SyntaxErrorLineNULL/artvisio.git
+    https://github.com/SyntaxErrorLineNULL/start-mobile.git
   ```
 
 ### If you have Docker installed
